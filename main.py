@@ -27,6 +27,9 @@ def playVoice():
 def stopVoice():
     engine.stop() # shut up!!!
 
+def clearText():
+    textInput.delete(0, tk.END)
+
 def saveFile():
     engine.save_to_file(textInput.get(), f"{fileInput.get()}.wav") # save tts to an wav file
     engine.runAndWait() # talk!!
@@ -53,7 +56,8 @@ voiceToggle = tk.Checkbutton(master=textVoice,text="Toggle Female voice",variabl
 # play and pause controls
 #playButton = tk.Button(master=playPause,text="Play TTS",command=playVoice)
 playButton = tk.Button(master=playPause,text="Play TTS",command=playVoice)
-stopButton = tk.Button(master=playPause,text="Stop TTS",command=stopVoice)
+#stopButton = tk.Button(master=playPause,text="Stop TTS",command=stopVoice)
+clearButton = tk.Button(master=playPause,text="Clear Input",command=clearText)
 # volume slider
 #volumeScale = tk.Scale(master=volumeContainer,from_=0.0,to=1.0,tickinterval=0.1,command=volumeController,orient='horizontal')
 # file saving
@@ -71,6 +75,7 @@ voiceToggle.pack(fill=tk.BOTH,side=tk.RIGHT,expand=True)
 playButton.pack(fill=tk.BOTH,side=tk.LEFT,expand=True)
 #stopButton.pack(fill=tk.BOTH,side=tk.RIGHT,expand=True) # can't even make use of this due to the window freezing up
 # i love tkinter.
+clearButton.pack(fill=tk.BOTH,side=tk.RIGHT,expand=True)
 #volumeScale.pack(fill=tk.BOTH,expand=True)
 saveLabel.pack(fill=tk.BOTH,expand=True)
 fileInput.pack(fill=tk.BOTH,side=tk.LEFT,expand=True)
